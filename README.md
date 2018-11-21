@@ -1,4 +1,4 @@
-# capstone_project
+# Instagram Fake Followers Detector
 Galvanize Data Science Immersive Capstone Project
 
 ## Topic: Instagram Fake Followers Detector 
