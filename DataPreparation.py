@@ -8,6 +8,9 @@ import bs4
 from bs4 import BeautifulSoup as soup
 
 
+mc = MongoClient()
+
+
 def get_info(url):
     uClient = uReq(url)
     page_html = uClient.read()
