@@ -24,6 +24,6 @@ def get_new_features(url):
     is_business = d['entry_data']['ProfilePage'][0]['graphql']['user']['is_business_account']
     biography = d['entry_data']['ProfilePage'][0]['graphql']['user']['biography']
     is_joined_recently = d['entry_data']['ProfilePage'][0]['graphql']['user']['is_joined_recently']
-    return is_private, is_business, biography, is_joined_recently 
+    return is_private, is_business, is_joined_recently, biography
 
 
