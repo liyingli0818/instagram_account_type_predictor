@@ -8,7 +8,7 @@ Being one of the most popular social networking platform, instagram has always b
 
 ### Data Availability:
 Scraping from instagram api.
-
+Created instagram.yaml file to store login informations on local machine (not in the project directory).
 
 
 ### Data Preparation:
