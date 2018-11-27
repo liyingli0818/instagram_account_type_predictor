@@ -1,3 +1,4 @@
+from urllib.request import urlopen as uReq
 import pandas as pd
 import json
 import time
@@ -12,11 +13,14 @@ db = mc['IFFD']
 fc = db['followers'] #followers collection
 
 
+browser = Chrome()
 
 def get_info(url):
-    browser = Chrome()
-    browser.get(url)
-    html = browser.page_source
+    # browser.get(url)
+    # html = browser.page_source
+    uClient = uReq(url)
+    html = uClient.read()
+    uClient.close()
     soup = BeautifulSoup(html, 'html.parser')
     sel = "meta"
     s = soup.find_all(sel, attrs={'name': 'description'})
@@ -26,23 +30,23 @@ def get_info(url):
     # find full name
     full_name = soup.find("title").text.split("(@")[0].replace("\n", "")
     #num posts
-    num_posts = s[0]["content"].split()[4]
+    num_posts = s[0]["content"].replace(",", "").split()[4]
     # find number of followers
-    num_followers = s[0]["content"].split()[0]
+    num_followers = s[0]["content"].replace(",", "").split()[0]
     # find number of following by
-    num_followings = s[0]["content"].split()[2]
+    num_followings = s[0]["content"].replace(",", "").split()[2]
     return user_name, full_name, num_posts, num_followers, num_followings
 
 
 def write_info(url):
-    # filename = "users_data.csv"
-    # f = open(filename, "w")
-    # headers = "user_name, full_name, num_posts, num_followed_by, num_following_by\n"
-    # f.write(headers)
-    # for url in urls:
-    user_name, full_name, num_posts, num_followers, num_followings = get_info(url)
-    f.write(user_name + ',' + full_name + ',' + str(num_posts) + ',' + str(num_followers) + ',' + str(num_followings) + "\n")
-    # f.close()
+    filename = "users_data.csv"
+    f = open(filename, "w")
+    headers = "user_name, full_name, num_posts, num_followed_by, num_following_by\n"
+    f.write(headers)
+    for url in urls:
+        user_name, full_name, num_posts, num_followers, num_followings = get_info(url)
+        f.write(user_name + ',' + full_name + ',' + str(num_posts) + ',' + str(num_followers) + ',' + str(num_followings) + "\n")
+    f.close()
 
 def scroll_to_last_follower(browser=browser, sel="li.wo9IH"):
     followers = browser.find_elements_by_css_selector(sel)
