@@ -45,5 +45,5 @@ def get_er_list(user_name_list):
             er = get_er(user_name)
             er_list.append(er)
         except:
-            er_list.append('NA')
+            er_list.append(0)
     return er_list
