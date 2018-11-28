@@ -19,13 +19,20 @@ Manipulate data using python numpy, pandas. Clean out nan values and invalid val
 
 ### Modeling:
 feature:ratio/followers
+
 Knn
+
 Random forest
-Build models on the users information. The features can be number of posts of a particular account, its number of followers, and the average number of account it follows on a daily basis.
+
+Build models on the users information. 
+The features can be number of posts of a particular account, its number of followers, and the average number of account it follows on a daily basis.
 
 ### Evaluation:
 Probability of: fake (1) or not_fake (0)
-Use cross validation, k-fold to train model and make prediction based on couple of features and get the results of if an account is fake or not. 
+Make prediction on probabilities based on couple of features and get the results of if an account is fake or not. 
+
+Use cross validation, k-fold and evaluated the models using log loss.
+
 Some afterwork treatment will be: give warning on those account, or just forced close the accounts for a certain amount of time.
 At the end, I plan to have a website that user can input a instagram username, and if that user has few posts but a lot of followers, it is likely a robot account.
 
