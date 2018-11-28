@@ -37,14 +37,6 @@ def get_info(url):
     num_followings = s[0]["content"].replace(",", "").split()[2]
     return user_name, full_name, num_posts, num_followers, num_followings
 
-    # Add more features
-    json_acceptable_string = soup.findAll('script')[4].contents[0][21:-1].replace('"', "\"")
-    d = json.loads(json_acceptable_string)
-    is_private = d['entry_data']['ProfilePage'][0]['graphql']['user']['is_private']
-    is_business = d['entry_data']['ProfilePage'][0]['graphql']['user']['is_business_account']
-    biography = d['entry_data']['ProfilePage'][0]['graphql']['user']['biography']
-    is_joined_recently = d['entry_data']['ProfilePage'][0]['graphql']['user']['is_joined_recently']
-
 
 def write_info(url):
     filename = "users_data.csv"
