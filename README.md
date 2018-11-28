@@ -37,7 +37,7 @@ Some afterwork treatment will be: give warning on those account, or just forced 
 At the end, I plan to have a website that user can input a instagram username, and if that user has few posts but a lot of followers, it is likely a robot account.
 
 
-### Deployment:
+### Deployment and Next Steps:
 Show examples in presentation.
 Website that user can input a instagram username and test it out.
 Minimal viable product will be a presentation slides that includes the methods and model evaluation and the prediction results.
