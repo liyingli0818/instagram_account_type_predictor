@@ -14,6 +14,9 @@ from sklearn.model_selection import cross_val_score, train_test_split, GridSearc
 
 
 # train test split
+data = pd.read_csv('../data_cleaned.csv')
+X = data.iloc[:, [3,5,6,7,8,10,11]]
+y = data['label']
 X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=4)
     
 
