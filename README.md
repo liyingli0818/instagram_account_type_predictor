@@ -31,7 +31,8 @@ Random Forest
 Build models on the users information. 
 
 The features can be number of posts of a particular account, its number of followers, and the average number of account it follows on a daily basis.
-  `````````
+
+
 ### Evaluation:
 Probability of: has fake (1) or does not have fake (0)
 Make prediction on probabilities based on couple of features and get the results of if an account has fake followers or not. 
