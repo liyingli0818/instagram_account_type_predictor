@@ -1,5 +1,6 @@
 from urllib.request import urlopen as uReq
 import pandas as pd
+import numpy as np
 import json
 import time
 import random
@@ -57,7 +58,10 @@ def get_new_features(url):
     is_joined_recently = d['entry_data']['ProfilePage'][0]['graphql']['user']['is_joined_recently']
     return is_private, is_business, is_joined_recently, biography
 
-
+def get_all_info(url):
+    followers_df = pd.DataFrame(np.array(get_info(url))).append(list(get_new_features(url))).T
+    followers_df.columns = ['user_name', 'full_name', 'num_posts', 'num_followers', 'num_following', 'is_private', 'is_business','is_joined_recently', 'biography']
+    return followers_df
 
 def write_info(url):
     filename = "users_data.csv"
