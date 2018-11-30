@@ -4,7 +4,7 @@ Galvanize Data Science Immersive Capstone Project (Dec 2018)
 ## Topic: Instagram Fake Followers Detector 
 
 ### Business Understanding: 
-Being one of the most popular social networking platform, instagram has always been troubled with fraud/robot account and private commercial account, which has a significant negative effect on their users experience as well. Sometimes, when E-Commerce companies are looking for bloggers for the purpose of advertising, they really want to identify "bloggers" that have fake followers among all the bloggers that they are interested in partnering with. To resolve this types of problem, I developed a solution to use machine learning models in detecting those account with fake followers or notify their users about the suspicious of an abnormal account. 
+Being one of the most popular social networking platform, instagram has always been troubled with fraud/robot account and private commercial account, which has a significant negative effect on their users experience as well. Sometimes, when E-Commerce companies are looking for bloggers for the purpose of advertising, they should be aware that there are ways to buy followers. They really want to identify "bloggers" that have fake followers among all the bloggers that they are interested in partnering with. To resolve this types of problem, I developed a solution to use machine learning models in detecting those account with fake followers or notify their users about the suspicious of an abnormal account. 
 
 ### Data Availability:
 Scraping followers informations from Instagram's official account.
