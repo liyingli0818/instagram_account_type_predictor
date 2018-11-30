@@ -4,9 +4,11 @@ import json
 import time
 import random
 import bs4
+import requests
 from bs4 import BeautifulSoup
 from selenium.webdriver import Chrome, Firefox
 from pymongo import MongoClient
+
 
 mc = MongoClient()
 db = mc['IFFD']
@@ -36,6 +38,25 @@ def get_info(url):
     # find number of following by
     num_followings = s[0]["content"].replace(",", "").split()[2]
     return user_name, full_name, num_posts, num_followers, num_followings
+
+
+# Add more features
+def get_new_features(url):
+    uClient = uReq(url)
+    html = uClient.read()
+    uClient.close()
+    soup = BeautifulSoup(html, 'html.parser')
+    sel = "meta"
+    
+    json_acceptable_string = soup.findAll('script')[4].contents[0][21:-1].replace('"', "\"")
+    d = json.loads(json_acceptable_string)
+    
+    is_private = d['entry_data']['ProfilePage'][0]['graphql']['user']['is_private']
+    is_business = d['entry_data']['ProfilePage'][0]['graphql']['user']['is_business_account']
+    biography = d['entry_data']['ProfilePage'][0]['graphql']['user']['biography']
+    is_joined_recently = d['entry_data']['ProfilePage'][0]['graphql']['user']['is_joined_recently']
+    return is_private, is_business, is_joined_recently, biography
+
 
 
 def write_info(url):
