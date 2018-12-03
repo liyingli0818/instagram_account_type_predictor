@@ -44,3 +44,25 @@ def predict_proba(X_test, X, y, model):
     cv_logloss_rf1 = -cross_val_score(rf, X_train, y_train, cv = 10, scoring = 'neg_log_loss').mean()
     return y_pred, cv_logloss_rf1
 
+
+
+# best model
+random_forest_grid = {'max_depth': [3, 4, None],
+                      'max_features': ['sqrt', 'log2', None],
+                      'min_samples_split': [2, 4],
+                      'min_samples_leaf': [1, 2, 4],
+                      'bootstrap': [True, False],
+                      'n_estimators': [20, 40, 80, 100],
+                      'random_state': [359]}
+
+rf_gridsearch = GridSearchCV(RandomForestClassifier(),
+                             random_forest_grid,
+                             n_jobs=-1,
+                             verbose=True,
+                             scoring='neg_log_loss')
+rf_gridsearch.fit(X_train, y_train)
+
+print("best parameters:", rf_gridsearch.best_params_)
+
+best_rf_model = rf_gridsearch.best_estimator_
+
