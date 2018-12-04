@@ -79,6 +79,10 @@ def scroll_to_last_follower(browser=browser, sel="li.wo9IH"):
     last_follower = followers[-1]
     last_follower.location_once_scrolled_into_view
 
+def get_follower_url(follower):
+    link = follower.find_element_by_css_selector('a.FPmhX')
+    return link.get_attribute('href')
+
 def get_followers(browser=browser, sel="li.wo9IH", n=5, wait_time=5):
     for i in range(n):
         scroll_to_last_follower()
@@ -86,11 +90,6 @@ def get_followers(browser=browser, sel="li.wo9IH", n=5, wait_time=5):
     followers = browser.find_elements_by_css_selector(sel)
     follower_urls = [get_follower_url(follower) for follower in followers]
     return follower_urls
-
-def get_follower_url(follower):
-    link = follower.find_element_by_css_selector('a.FPmhX')
-    return link.get_attribute('href')
-
 
 
 
