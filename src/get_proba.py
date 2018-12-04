@@ -20,5 +20,6 @@ def get_proba(username, model):
     one_user_df.iloc[0,7] = [1 if one_user_df.iloc[0,7] == 'True' else 0]
     one_user_df.iloc[:,[2,4,5,6,7,8,9]]
     one_user_pred_proba = model.predict_proba(one_user_df.iloc[:,[2,4,5,6,7,8,9]])[:,1][0]
-    return one_user_pred_proba
+    one_user_df['prob_fake'] = one_user_pred_proba
+    return one_user_df
 
