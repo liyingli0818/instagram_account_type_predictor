@@ -1,5 +1,4 @@
-from src.get_new_feature import get_new_features
-from src.DataPreparation import get_info
+from DataPreparation import *
 import pandas as pd
 import numpy as np
 
