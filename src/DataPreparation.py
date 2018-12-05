@@ -49,8 +49,9 @@ def get_new_features(url):
     soup = BeautifulSoup(html, 'html.parser')
     sel = "meta"
     
-    json_acceptable_string = soup.findAll('script')[4].contents[0][21:-1].replace('"', "\"")
-    d = json.loads(json_acceptable_string)
+    script = soup.select_one('body script').text
+    script_json = script.partition(' = ')[2].rpartition(';')[0]
+    d = json.loads(script_json)
     
     is_private = d['entry_data']['ProfilePage'][0]['graphql']['user']['is_private']
     is_business = d['entry_data']['ProfilePage'][0]['graphql']['user']['is_business_account']
@@ -58,10 +59,24 @@ def get_new_features(url):
     is_joined_recently = d['entry_data']['ProfilePage'][0]['graphql']['user']['is_joined_recently']
     return is_private, is_business, is_joined_recently, biography
 
-def get_all_info(url):
-    followers_df = pd.DataFrame(np.array(get_info(url))).append(list(get_new_features(url))).T
-    followers_df.columns = ['user_name', 'full_name', 'num_posts', 'num_followers', 'num_following', 'is_private', 'is_business','is_joined_recently', 'biography']
-    return followers_df
+def get_json(url):
+    uClient = uReq(url)
+    html = uClient.read()
+    uClient.close()
+    soup = BeautifulSoup(html, 'html.parser')
+    sel = "meta"
+
+    script = soup.select_one('body script').text
+    script_json = script.partition(' = ')[2].rpartition(';')[0]
+    d = json.loads(script_json)
+    return d
+
+    
+
+
+
+
+
 
 def write_info(url):
     filename = "users_data.csv"
@@ -98,3 +113,10 @@ def add_url_to_fc(url):
         return False
     fc.insert_one({'url': url})
     return True
+
+
+def get_num_likes(url):
+    browser.get(url)
+    browser.find_element_by_class_name('eLAPa').click()
+    time.sleep(2)
+    return browser.find_element_by_class_name('Nm9Fw').text.split()[0]
