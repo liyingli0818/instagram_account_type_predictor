@@ -1,4 +1,3 @@
-from urllib.request import urlopen as uReq
 import pandas as pd
 import numpy as np
 import json
@@ -60,11 +59,10 @@ def get_new_features(url):
     return is_private, is_business, is_joined_recently, biography
 
 def get_json(url):
-    uClient = uReq(url)
-    html = uClient.read()
-    uClient.close()
+    browser.get(url)
+    time.sleep(2 + random.random()*5)
+    html = browser.page_source
     soup = BeautifulSoup(html, 'html.parser')
-    sel = "meta"
 
     script = soup.select_one('body script').text
     script_json = script.partition(' = ')[2].rpartition(';')[0]
