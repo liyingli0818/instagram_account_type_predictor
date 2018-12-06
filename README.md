@@ -3,10 +3,10 @@ Galvanize Data Science Immersive Capstone Project (Dec 2018)
 
 
 ### Business Understanding: 
-Being one of the most popular social networking platform, instagram has attracted a lot of business corporations to advertise their product and make social impact. Sometimes for those businesses, for example E-Commerce companies, they want to have information on user’s account status when they are looking for instagram influencers, however, they do not want to ignore those accounts that appear to be personal accounts but actually has potential business power. To help them gaining insights, I have developed a solution using machine learning models to predict Instagram Account Type (Business/Personal) based on various types of features.
+Being one of the most popular social networking platform, instagram has attracted a lot of business corporations to advertise their product and make social impact. Sometimes for those businesses, for example E-Commerce companies, they want to have information on user’s account status when they are looking for instagram influencers, however, they do not want to ignore those accounts that appear to be personal accounts but actually has potential business power. To help them gaining insights, I have developed a solution using machine learning models to predict Instagram Account Type (Business/Personal) based on user information and various types of account features.
 
 ### Data Availability:
-Assuming random, I scraped users information of followers under Instagram's official account.
+By assuming randomness, I scraped users information of followers under Instagram's official account (200 users to train Baseline model and increased to 2000 users for training my final model).
 Created instagram.yaml file to store login informations on local machine (not in the project directory) and created automated login process. Therefore, next time if I am interested in followers information of another account (e.g. a particular e-commerce platform, celebrities/stars), there is no need to log in manually every time.
 
 
@@ -19,7 +19,7 @@ Manipulate data using python numpy, pandas. Clean out nan values and invalid val
 
 
 ### Modeling:
-Generated Features:ratio on number of followings and number of followers
+Generated Features:ratio of number of followings to number of followers
 
 Linear Regression
 Random Forest
@@ -45,6 +45,5 @@ Show examples in presentation.
 Find a particular account that get a high prediction in being business account from my model, however, it is actually not a business account.
 Business applications: Use the model to develop in product advertising and online marketing to find influencers that have high potential business power.
 
-Possibly a website 
 
 Minimal viable product will be a presentation slides that includes the methods and model evaluation and the regression results and the analysis of features. Actually looking into the account and demonstrate that the account has high potential marketing power (e.g. large number of followers, lots of Likes in each posts).
