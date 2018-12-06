@@ -48,10 +48,25 @@ def flatten_user_data(user_data_nested):
         ud['bio'] = gql['biography']
         ud['followed_by'] = gql['edge_followed_by']['count']
         ud['follows'] = gql['edge_follow']['count']
+        ud['num_posts'] = gql['edge_owner_to_timeline_media']['count']
         ud['id'] = gql['id']
+        ud['is_joined_recently'] = gql['is_joined_recently']
+        ud['is_private'] = gql['is_private']
+        ud['is_business_account'] = gql['is_business_account']
+        
+        if ('edge_owner_to_timeline_media' in gql
+            and 'edges' in gql['edge_owner_to_timeline_media']
+            and len(gql['edge_owner_to_timeline_media']['edges'])> 0
+            and 'node' in gql['edge_owner_to_timeline_media']['edges'][0]
+            and 'edge_liked_by' in gql['edge_owner_to_timeline_media']['edges'][0]['node']
+            and gql['is_private'] == False
+           ):
+            ud['likes_last_post'] = gql['edge_owner_to_timeline_media']['edges'][0]['node']['edge_liked_by']['count']
+        
     return ud
-
     
+
+
 
 
 
@@ -95,8 +110,19 @@ def add_url_to_fc(url):
     return True
 
 
-def get_num_likes(url):
+def get_one_user_df(url):
     browser.get(url)
-    browser.find_element_by_class_name('eLAPa').click()
-    time.sleep(2)
-    return browser.find_element_by_class_name('Nm9Fw').text.split()[0]
+    one_user_nested = get_json(url)
+    one_user_nested['url'] = url
+    one_user_flattened = flatten_user_data(one_user_nested)
+    df = pd.DataFrame(one_user_flattened, index=[0])
+    return df
+
+def get_pred_one(url):
+    df_one = get_one_user_df(url)
+    df_one['is_business_account'] = df_one['is_business_account'].astype(int)
+    df_one['is_joined_recently'] = df_one['is_joined_recently'].astype(int)
+    df_one['is_private'] = df_one['is_private'].astype(int)
+    X_one = df_one.iloc[:,[2,3,4,6,7,9]]
+    y_pred_one = best_rf_model.predict_proba(X_one)[:, 1]
+    return y_pred_one
