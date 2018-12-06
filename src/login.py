@@ -27,7 +27,9 @@ def site_login(url):
     username, password = load_login_info()
     time.sleep(2)
     browser.find_element_by_name('username').send_keys(username)
+    time.sleep(2)
     browser.find_element_by_name('password').send_keys(password)
+    time.sleep(2)
     browser.find_element_by_class_name('bkEs3').click()
 
 
