@@ -47,6 +47,8 @@ def predict_proba(X_test, X, y, model):
 
 
 # best model
+random_forest_best
+
 random_forest_grid = {'max_depth': [3, 4, None],
                       'max_features': ['sqrt', 'log2', None],
                       'min_samples_split': [2, 4],
@@ -63,6 +65,7 @@ rf_gridsearch = GridSearchCV(RandomForestClassifier(),
 rf_gridsearch.fit(X_train, y_train)
 
 print("best parameters:", rf_gridsearch.best_params_)
-
 best_rf_model = rf_gridsearch.best_estimator_
+
+#gradient descent
 
