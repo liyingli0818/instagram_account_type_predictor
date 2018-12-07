@@ -69,20 +69,6 @@ def flatten_user_data(user_data_nested):
 
 
 
-
-
-
-
-def write_info(url):
-    filename = "users_data.csv"
-    f = open(filename, "w")
-    headers = "user_name, full_name, num_posts, num_followers, num_followings\n"
-    f.write(headers)
-    for url in urls:
-        user_name, full_name, num_posts, num_followers, num_followings = get_info(url)
-        f.write(user_name + ',' + full_name + ',' + str(num_posts) + ',' + str(num_followers) + ',' + str(num_followings) + "\n")
-    f.close()
-
 def scroll_to_last_follower(browser=browser, sel="li.wo9IH"):
     followers = browser.find_elements_by_css_selector(sel)
     len(followers)
@@ -118,11 +104,14 @@ def get_one_user_df(url):
     df = pd.DataFrame(one_user_flattened, index=[0])
     return df
 
-def get_pred_one(url):
+def get_pred_one(url, model):
     df_one = get_one_user_df(url)
     df_one['is_business_account'] = df_one['is_business_account'].astype(int)
     df_one['is_joined_recently'] = df_one['is_joined_recently'].astype(int)
     df_one['is_private'] = df_one['is_private'].astype(int)
+    
     X_one = df_one.iloc[:,[2,3,4,6,7,9]]
-    y_pred_one = best_rf_model.predict_proba(X_one)[:, 1]
+    X_one = df_one[['followed_by', 'follows', 'is_joined_recently', 'is_private', 'likes_last_post', 'num_posts']]
+    y_pred_one = model.predict_proba(X_one)[:, 1]
     return y_pred_one
+
