@@ -1,34 +1,75 @@
 <html>
-    <head>
-    <style>
-            div.a {
-                    text-align: center;
-            }
-    </style>
-                    
+    <head>   
+        <link href="index.css" rel="stylesheet" type="text/css"/>        
         <title>Instagram Account Type Predictor</title>
-        <link rel"stylesheet" href="index.css">
+        <link rel="stylesheet"  type="text/css" href="index.css">
         <meta name="description" content="Hello world demo written in Brython www.brython.info">
         <meta name="keywords" content="Python,Brython">
         <meta charset="iso-8859-1">
         <script type="text/javascript" src="brython/brython.js"></script>
-    </head>
-    <head>
-            <meta name="viewport" content="width=device-width, initial-scale=1">
-            <style>
-            body {
+        <script type="text/javascript" src="brython/brython_stdlib.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+                body {
                 margin: 0;
                 font-family: Arial, Helvetica, sans-serif;
             }
+
+                .switch {
+                    position: relative;
+                    display: inline-block;
+                    width: 70px;
+                    height: 34px;
+                }
+                
+                .switch input {display:none;}
+                
+                .slider {
+                    position: absolute;
+                    cursor: pointer;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    background-color: #c7c5c5;
+                    -webkit-transition: .4s;
+                    transition: .4s;
+                }
+                
+                .slider:before {
+                    position: absolute;
+                    content: "";
+                    height: 26px;
+                    width: 26px;
+                    left: 4px;
+                    bottom: 4px;
+                    background-color: white;
+                    -webkit-transition: .4s;
+                    transition: .4s;
+                }
+                
+                input:checked + .slider {
+                    background-color: #c1cbd7;
+                }
+                
+                input:focus + .slider {
+                    box-shadow: 0 0 1px #c1cbd7;
+                }
+                
+                input:checked + .slider:before {
+                    -webkit-transform: translateX(55px);
+                    -ms-transform: translateX(55px);
+                    transform: translateX(35px);
+                }
             
             .topnav {
                 overflow: hidden;
-                background-color: #819c9c;
+                background-color: #c1cbd7;
             }
             
             .topnav a {
                 float: left;
-                color: #f2f2f2;
+                color: #000000;
                 text-align: center;
                 padding: 14px 16px;
                 text-decoration: none;
@@ -41,37 +82,58 @@
             }
             
             .topnav a.active {
-                background-color: #819c9c;
+                background-color: #c1cbd7;
                 color: white;
             }
-            </style>
-            </head>
-            <body>
-            
-            <div class="topnav">
-                <a>Instagram Account Type Predictor</a>
                 
-            </div>
-            
-            
+        </style>
+    
+    </head>
+   
     <body onload="brython(1)">
-        <script type="text/python">
-        from browser import document, alert
-        
-        def echo(ev):
-            alert("You entered: {}. There is a probability of {{prediction}} that this account is a business account!".format(document["zone"].value))
+            
+    <div class="topnav">
+        <a>Instagram Account Type Predictor</a>
+    </div>
+
+    
+    
             
 
+        
+
+        <script type="text/python3">
+            from browser import document, ajax
+            import json
+            def display_result(response):
+                probability = float(response.text)
+                if probability < 0.5:
+                    prediction = 'Personal Account! '
+                else:
+                    prediction = 'Business Account! '
+                if response.status==200 or response.status==0:
+                    document["result"].html = prediction + 'Probability of business account is ' + str(round(probability, 5))
+                else:
+                    document["result"].html = "error " + response.text
+            def get_prediction(ev):
+                """Get the predicted probability."""
+                req = ajax.ajax()
+                req.bind('complete', display_result)
+                username = document['username'].value
+                req.open('GET', f'/predict_account_type/{username}', True)
+                #req.set_header('content-type','application/json')
+                #data = json.dumps({'user_input': document['user_input'].value})
+                req.send()
+            document["predict_button"].bind("click", get_prediction)
+              </script>
 
 
-        document["test"].bind("click", echo)
-
-        </script>
         <p> 
                 <div class="a">
                 <img src="ins_logo.png" style="width:35px;height:35px;"/>
-                   Enter an Instagram username: <input id="zone" autocomplete="off">
-            <button id="test">Predict! </button>
+                Username: <input id="username" type="text" size="20">    
+                <button id="predict_button">Submit</button>
+                <div id="result"></div>
         </p>
         <link href="index.css" rel="stylesheet" type="text/css" />
         <p>
@@ -80,10 +142,10 @@
                 <label>
                     Business
                     <label class="switch"><input type="checkbox" id="togBtn">
-                        <div class="slider round"><!--ADDED HTML -->
-                            <span class="on"></span><span class="off"></span><!--END-->
+                        <div class="slider round">
+                            <span class="on"></span><span class="off"></span>
                         </div></label>
-                    Not Business
+                    Personal
                 </label>
             </div>
             </div>
@@ -91,10 +153,10 @@
         </p>
         <br>
         <br>
-        <div class="a"><h1 style="color:#A9A9A9"class="wiki">Wiki</h1></div>
-        <div class="a"><h1 style="color:#A9A9A9"class="contact">Contact</h1></div>
-        <div class="a"><h1 style="color:#A9A9A9"class="about">About</h1></div>
-        <div class="a"><h1 style="color:#A9A9A9"class="github">Github</h1></div>
+        <div class="a"><h1 style="color:#afb0b2"class="wiki">Wiki</h1></div>
+        <div class="a"><h1 style="color:#afb0b2"class="contact">Contact</h1></div>
+        <div class="a"><h1 style="color:#afb0b2"class="about">About</h1></div>
+        <div class="a"><h1 style="color:#afb0b2"class="github">Github</h1></div>
         <div class="a"><a href = "https://en.wikipedia.org/wiki/List_of_most-followed_Instagram_Business_accounts">Most Followed Instagram Business Account Wiki Page</a></div>
     </body>
 </html>
