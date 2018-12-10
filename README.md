@@ -36,7 +36,7 @@ Check Beta values to see the correlation and perform statistical tests on it (e.
 Use cross validation, k-fold to train model based on couple of features and get the results of beta’s and log loss.
 Some afterwork treatment will be: give insights on those features, maybe suggest a company to look into which feature if it is strongly correlated to the engagement rate.
 
-![roc.png](https://github.com/liyingli0818/instagram_account_type_predictor/blob/master/image/roc_1200.png)
+![roc.png](https://github.com/liyingli0818/instagram_account_type_predictor/blob/master/image/roc_after_add_avg5.png)
 
 
 At the end, I plan to have a website that user can input a instagram username and get insights on their account analysis.
