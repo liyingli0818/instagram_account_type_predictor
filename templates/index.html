@@ -10,6 +10,10 @@
         <script type="text/javascript" src="brython/brython_stdlib.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
+            body {  
+                    background: url(''); 
+            } 
+   
                 body {
                 margin: 0;
                 font-family: Arial, Helvetica, sans-serif;
@@ -89,9 +93,7 @@
         </style>
     
     </head>
-   
-    <body onload="brython(1)">
-            
+    <body onload="brython(1)" style="background: url('file:///Users/liliying/Galvanize/instagram_fake_followers_detector/image/background1.png')">
     <div class="topnav">
         <a>Instagram Account Type Predictor</a>
     </div>
@@ -127,16 +129,18 @@
             document["predict_button"].bind("click", get_prediction)
               </script>
 
-
+        <center>
         <p> 
                 <div class="a">
                 <img src="ins_logo.png" style="width:35px;height:35px;"/>
-                Username: <input id="username" type="text" size="20">    
-                <button id="predict_button">Submit</button>
+                Enter a Username: <input id="username" type="text" size="20">    
+                <button id="predict_button">Predict</button>
                 <p></p>
                 <div id="result"></div>
         </p>
+        </center>
         <link href="index.css" rel="stylesheet" type="text/css" />
+        <center>
         <p>
         <div class="col s4">
             <div class="switch">
@@ -152,12 +156,13 @@
             </div>
         </div>
         </p>
+        </center>
         <br>
         <br>
-        <div class="a"><h1 style="color:#afb0b2"class="contact">Contact</h1></div>
-        <div class="a"><h1 style="color:#afb0b2"class="about">About</h1></div>
-        <div class="a"><h1 style="color:#afb0b2"class="github">Github</h1></div>
-        <div class="a"><a href = "https://en.wikipedia.org/wiki/List_of_most-followed_Instagram_Business_accounts">Most Followed Instagram Business Account Wiki Page</a></div>
+        <center><div class="a"><h1 style="color:#afb0b2"class="contact">Contact</h1></div></center>
+        <center><div class="a"><h1 style="color:#afb0b2"class="about">About</h1></div></center>
+        <center><div class="a"><h1 style="color:#afb0b2"class="github">Github</h1></div></center>
+        <center><div class="a"><a href = "https://en.wikipedia.org/wiki/List_of_most-followed_Instagram_Business_accounts">Most Followed Instagram Business Account Wiki Page</a></div></center>
     </body>
 </html>
 
