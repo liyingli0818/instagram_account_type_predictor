@@ -2,6 +2,7 @@
 Galvanize Data Science Immersive Capstone Project (Dec 2018)
 
 
+
 ### Business Understanding: 
 Being one of the most popular social networking platform, instagram has attracted a lot of business corporations to advertise their product and make social impact. Sometimes for those businesses, for example E-Commerce companies, they want to have information on user’s account status when they are looking for instagram influencers, however, they do not want to ignore those accounts that appear to be personal accounts but actually has potential business power. To help them gaining insights, I have developed a solution using machine learning models to predict Instagram Account Type (Business/Personal) based on user information and various types of account features.
 
@@ -34,6 +35,8 @@ Check Beta values to see the correlation and perform statistical tests on it (e.
 ### Evaluation:
 Use cross validation, k-fold to train model based on couple of features and get the results of beta’s and log loss.
 Some afterwork treatment will be: give insights on those features, maybe suggest a company to look into which feature if it is strongly correlated to the engagement rate.
+
+![roc.png](https://github.com/liyingli0818/instagram_account_type_predictor/blob/master/image/roc_1200.png)
 
 
 At the end, I plan to have a website that user can input a instagram username and get insights on their account analysis.
