@@ -4,14 +4,20 @@ Galvanize Data Science Immersive Capstone Project (Dec 2018)
 
 
 ### Business Understanding: 
+![Slide_BusinessApplication](https://github.com/liyingli0818/instagram_account_type_predictor/blob/master/image/Slide_BusinessApplication.png)
+
 Being one of the most popular social networking platform, instagram has attracted a lot of business corporations to advertise their product and make social impact. Sometimes for those businesses, for example E-Commerce companies, they want to have information on user’s account status when they are looking for instagram influencers, however, they do not want to ignore those accounts that appear to be personal accounts but actually has potential business power. To help them gaining insights, I have developed a solution using machine learning models to predict Instagram Account Type (Business/Personal) based on user information and various types of account features.
 
 ### Data Availability:
 By assuming randomness, I scraped users information of followers under Instagram's official account (200 users to train Baseline model and increased to 2000 users for training my final model).
 Created instagram.yaml file to store login informations on local machine (not in the project directory) and created automated login process. Therefore, next time if I am interested in followers information of another account (e.g. a particular e-commerce platform, celebrities/stars), there is no need to log in manually every time.
 
+### Data Exploration:
+![Slide_DataExploration](https://github.com/liyingli0818/instagram_account_type_predictor/blob/master/image/Slide_DataExploration.png)
+
 
 ### Data Preparation:
+![Slide_DataPreparation](https://github.com/liyingli0818/instagram_account_type_predictor/blob/master/image/Slide_DataPreparation.png)
 Web-scraping or api-scraping (api key)
 Created a followers collection (fc) and stored json file (dict format) from "follower_urls" in Mongo DB
 Get information on username, fullname, number of posts, number of followers, number of followings, is private or not, is business or not, is joined recently or not, etc. 
@@ -35,7 +41,6 @@ Check Beta values to see the correlation and perform statistical tests on it (e.
 ### Evaluation:
 Use cross validation, k-fold to train model based on couple of features and get the results of beta’s and log loss.
 Some afterwork treatment will be: give insights on those features, maybe suggest a company to look into which feature if it is strongly correlated to the engagement rate.
-
 ![roc.png](https://github.com/liyingli0818/instagram_account_type_predictor/blob/master/image/roc_after_add_avg5.png)
 
 
