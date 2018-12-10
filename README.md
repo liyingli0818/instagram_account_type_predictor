@@ -12,9 +12,6 @@ Being one of the most popular social networking platform, instagram has attracte
 By assuming randomness, I scraped users information of followers under Instagram's official account (200 users to train Baseline model and increased to 2000 users for training my final model). Created a followers collection (fc) and stored json file (dict format) from "follower_urls" in Mongo DB. 
 Created instagram.yaml file to store login informations on local machine (not in the project directory) and created automated login process. Next time if I am interested in followers information of another account (e.g. a particular e-commerce platform, celebrities/stars), there is no need to log in manually every time.
 
-### Data Exploration:
-![Slide_DataExploration](https://github.com/liyingli0818/instagram_account_type_predictor/blob/master/image/Slide_DataExploration.png)
-
 
 ### Data Preparation:
 ![Slide_DataPreparation](https://github.com/liyingli0818/instagram_account_type_predictor/blob/master/image/Slide_DataPreparation.png)
