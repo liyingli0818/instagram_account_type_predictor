@@ -39,7 +39,7 @@ Check Beta values to see the correlation and perform statistical tests on it (e.
 
 
 ### Evaluation:
-Use cross validation, k-fold to train model and get the results of log loss and roc.
+Use cross validation, k-fold to train model and get the results of log loss and roc. Final model got a log loss of 0.3544.
 Some afterwork treatment will be: give insights on those features, maybe suggest a company to look into which feature if it is strongly correlated to the engagement rate.
 ![roc.png](https://github.com/liyingli0818/instagram_account_type_predictor/blob/master/image/roc_after_add_avg5.png)
 
