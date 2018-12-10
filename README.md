@@ -6,7 +6,7 @@
 ### Business Problem: 
 ![Slide_BusinessApplication](https://github.com/liyingli0818/instagram_account_type_predictor/blob/master/image/Slide_BusinessApplication.png)
 
-Being one of the most popular social networking platform, instagram has attracted a lot of business corporations to advertise their product and make social impact. Sometimes for those businesses, for example E-Commerce companies, they want to have information on user’s marketing potentials when looking for Instagram influencers, however, they do not want to ignore those accounts that appear to be personal accounts but actually have noticeable marketing potentials. To help them gaining insights, I have developed a solution using machine learning models to predict Instagram Account Type (Business/Personal) based on user information and various types of account features.
+Being one of the most popular social networking platform, instagram has attracted a lot of business corporations to advertise their product and make social impact. Sometimes for those businesses, for example E-Commerce companies, they want to have information on user’s marketing potentials when looking for Instagram influencers, however, they do not want to ignore those accounts that appear to be personal accounts but actually have noticeable marketing potentials. To help them gaining insights, I have developed a solution to predict Instagram Account Type (Business/Personal) based on user and content information and various types of account features.
 
 ### Data Preparation:
 By assuming randomness, I scraped users information of followers under Instagram's official account (200 users to train Baseline model and increased to 2000 users for training my final model).
