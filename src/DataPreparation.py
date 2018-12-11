@@ -62,7 +62,11 @@ def flatten_user_data(user_data_nested):
             and gql['is_private'] == False
            ):
             ud['likes_last_post'] = gql['edge_owner_to_timeline_media']['edges'][0]['node']['edge_liked_by']['count']
-        
+            likes = []
+            for post in user_data_nested['entry_data']['ProfilePage'][0]['graphql']['user']['edge_owner_to_timeline_media']['edges'][:6]:
+                likes.append(post['node']['edge_liked_by']['count'])
+                avg_likes = np.mean(likes)
+            ud['avg_likes_five_recent_posts']=avg_likes
     return ud
     
 
@@ -111,8 +115,8 @@ def get_pred_one(url, model):
     df_one['is_joined_recently'] = df_one['is_joined_recently'].astype(int)
     df_one['is_private'] = df_one['is_private'].astype(int)
     
-    X_one = df_one.iloc[:,[2,3,4,6,7,9]]
-    X_one = df_one[['followed_by', 'follows', 'is_joined_recently', 'is_private', 'likes_last_post', 'num_posts']]
+    X_one = df_one.iloc[:,[1,3,4,7,8,9,10]]
+    X_one = df_one[['avg_likes_five_recent_posts','followed_by', 'follows', 'is_joined_recently', 'is_private', 'likes_last_post', 'num_posts']]
     y_pred_one = model.predict_proba(X_one)[:, 1]
     return y_pred_one
 

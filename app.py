@@ -4,7 +4,7 @@ import pickle
 
 
 #url = instagram.com/username
-loaded_model = pickle.load(open('finalized_model.sav', 'rb'))
+loaded_model = pickle.load(open('finalized_model.pkl', 'rb'))
 #prediction = get_pred_one(url, loaded_model)
 
 
