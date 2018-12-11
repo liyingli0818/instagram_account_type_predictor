@@ -3,6 +3,13 @@ h1.size {font-family: san-serif; color:red}
 img  {width:100%}
 
 
+#background {
+  background-image: url("../image/background1.jpg");
+  width: 100px;
+  height: 100px;
+}
+
+
 
 
 
@@ -101,7 +108,7 @@ img  {width:100%}
   
   .topnav {
       overflow: hidden;
-      background-color: #819c9c;
+      background-color: #c1cbd7;
   }
   
   .topnav a {
@@ -119,6 +126,6 @@ img  {width:100%}
   }
   
   .topnav a.active {
-      background-color: #819c9c;
+      background-color: #c1cbd7;
       color: white;
   }

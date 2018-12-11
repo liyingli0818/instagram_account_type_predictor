@@ -68,7 +68,7 @@
             
             .topnav {
                 overflow: hidden;
-                background-color: #c1cbd7;
+                background-color: #dfe3ee;
             }
             
             .topnav a {
@@ -93,8 +93,11 @@
         </style>
     
     </head>
-    <body onload="brython(1)" style="background: url('file:///Users/liliying/Galvanize/instagram_fake_followers_detector/image/background1.png')">
-    <div class="topnav">
+    <body onload="brython(1)">
+        <div>
+            <img src="background1.jpg" alt="background">
+        </div>
+        <div class="topnav">
         <a>Instagram Account Type Predictor</a>
     </div>
 
@@ -114,7 +117,7 @@
                 else:
                     prediction = 'Business Account! '
                 if response.status==200 or response.status==0:
-                    document["result"].html = prediction + 'Probability of business account is ' + str(round(probability, 5))
+                    document["result"].html = prediction + 'Probability of business account is ' + str(round(probability, 2))
                 else:
                     document["result"].html = "error " + response.text
             def get_prediction(ev):
