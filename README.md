@@ -19,7 +19,8 @@ Web-scraping or api-scraping (api key)
 Get information on username, fullname, number of posts, number of followers, number of followings, is private or not, is business or not, is joined recently or not, etc. 
 Manipulate data using python numpy, pandas. Clean out nan values and invalid values.
 
-
+### Tools and Modules:
+Python (Numpy, Pandas, Scikit-Learn, Matplotlib), MongoDB, Flask, Selenium, Amazon Web Services
 
 ### Modeling:
 Features: Number of posts, number of followers, number of followings, likes on last post, is_private, is_joined_recently, avg_likes_five_recent_posts (measures the average number of likes on users five most recent posts). 
@@ -44,5 +45,10 @@ ROC:
 
 
 
-### Next Steps:
-Business applications: Use the model to develop in product advertising and online marketing to find influencers that have high potential business marketing power. Actually looking into the account and demonstrate that the account has high potential marketing power (e.g. large number of followers, lots of Likes in each posts).
+### Conclusion and Further Steps:
+1. Add functionality to web app. 
+
+2. NLP on Biography.
+
+3. Use the model to develop in product advertising and online marketing to find influencers that have high potential business marketing power by actually inspecting their account (e.g. large number of followers, lots of Likes in each posts).
+
