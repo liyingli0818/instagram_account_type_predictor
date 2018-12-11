@@ -55,6 +55,14 @@
             transition: .4s;
             }
 
+            .slider.round {
+            border-radius: 34px;
+            }
+
+            .slider.round:before {
+            border-radius: 50%;
+            }
+
             input:checked + .slider {
             background-color: #c1cbd7;
             }
@@ -102,13 +110,14 @@
 
             #parentDiv {
             position: relative;
+            width: 100%;
             }
         </style>
     
     </head>
     <body onload="brython(1)">
         <div id="parentDiv">
-            <img src="background1.jpg" alt="background">
+            <img src="background3.jpg" alt="background">
 
             <div id='contentDiv'>
                 <div class="topnav">
@@ -177,9 +186,7 @@
                 #data = json.dumps({'user_input': document['user_input'].value})
                 req.send()
             document["predict_button"].bind("click", get_prediction)
-            
-
-              </script>
+            </script>
     </body>
 </html>
 
