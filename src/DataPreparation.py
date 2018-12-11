@@ -104,6 +104,7 @@ def get_one_user_df(url):
     df = pd.DataFrame(one_user_flattened, index=[0])
     return df
 
+
 def get_pred_one(url, model):
     df_one = get_one_user_df(url)
     df_one['is_business_account'] = df_one['is_business_account'].astype(int)
