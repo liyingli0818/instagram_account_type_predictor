@@ -2,108 +2,166 @@
     <head>   
         <link href="index.css" rel="stylesheet" type="text/css"/>        
         <title>Instagram Account Type Predictor</title>
-        <link rel="stylesheet"  type="text/css" href="index.css">
+        <link rel="stylesheet"  type="text/css" href="{{ url_for('static', filename='index.css') }}">
         <meta name="description" content="Hello world demo written in Brython www.brython.info">
         <meta name="keywords" content="Python,Brython">
         <meta charset="iso-8859-1">
         <script type="text/javascript" src="brython/brython.js"></script>
         <script type="text/javascript" src="brython/brython_stdlib.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            body {  
-                    background: url(''); 
-            } 
-   
-                body {
-                margin: 0;
-                font-family: Arial, Helvetica, sans-serif;
+        <style>  
+
+            #background {
+            background-image: url("background1.jpg");
+            width: 100px;
+            height: 100px;
             }
 
-                .switch {
-                    position: relative;
-                    display: inline-block;
-                    width: 70px;
-                    height: 34px;
-                }
-                
-                .switch input {display:none;}
-                
-                .slider {
-                    position: absolute;
-                    cursor: pointer;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background-color: #c7c5c5;
-                    -webkit-transition: .4s;
-                    transition: .4s;
-                }
-                
-                .slider:before {
-                    position: absolute;
-                    content: "";
-                    height: 26px;
-                    width: 26px;
-                    left: 4px;
-                    bottom: 4px;
-                    background-color: white;
-                    -webkit-transition: .4s;
-                    transition: .4s;
-                }
-                
-                input:checked + .slider {
-                    background-color: #c1cbd7;
-                }
-                
-                input:focus + .slider {
-                    box-shadow: 0 0 1px #c1cbd7;
-                }
-                
-                input:checked + .slider:before {
-                    -webkit-transform: translateX(55px);
-                    -ms-transform: translateX(55px);
-                    transform: translateX(35px);
-                }
-            
+            body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .switch {
+            position: relative;
+            display: inline-block;
+            width: 70px;
+            height: 34px;
+            }
+
+            .switch input {display:none;}
+
+            .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #c7c5c5;
+            -webkit-transition: .4s;
+            transition: .4s;
+            }
+
+            .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            -webkit-transition: .4s;
+            transition: .4s;
+            }
+
+            .slider.round {
+            border-radius: 34px;
+            }
+
+            .slider.round:before {
+            border-radius: 50%;
+            }
+
+            input:checked + .slider {
+            background-color: #c1cbd7;
+            }
+
+            input:focus + .slider {
+            box-shadow: 0 0 1px #c1cbd7;
+            }
+
+            input:checked + .slider:before {
+            -webkit-transform: translateX(55px);
+            -ms-transform: translateX(55px);
+            transform: translateX(35px);
+            }
+
             .topnav {
-                overflow: hidden;
-                background-color: #c1cbd7;
+            overflow: hidden;
+            background-color: #dfe3ee;
             }
-            
+
             .topnav a {
-                float: left;
-                color: #000000;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-                font-size: 17px;
+            float: left;
+            color: #000000;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
             }
-            
+
             .topnav a:hover {
-                background-color: #ddd;
-                color: black;
+            background-color: #ddd;
+            color: black;
             }
-            
+
             .topnav a.active {
-                background-color: #c1cbd7;
-                color: white;
+            background-color: #c1cbd7;
+            color: white;
             }
-                
+
+            #contentDiv {
+            position: absolute;
+            top: 0;
+            left: 10;
+            width: 100%;
+            }
+
+            #parentDiv {
+            position: relative;
+            width: 100%;
+            }
         </style>
     
     </head>
-    <body onload="brython(1)" style="background: url('file:///Users/liliying/Galvanize/instagram_fake_followers_detector/image/background1.png')">
-    <div class="topnav">
-        <a>Instagram Account Type Predictor</a>
-    </div>
+    <body onload="brython(1)">
+        <div id="parentDiv">
+            <img src="background3.jpg" alt="background">
 
-    
-    
-            
+            <div id='contentDiv'>
+                <div class="topnav">
+                    <a>Instagram Account Type Predictor</a>
+                </div>
 
+                <center>
+                <p> 
+                        <div class="a">
+                        <img src="ins_logo.png" style="width:35px;height:35px;"/>
+                        Enter a Username: <input id="username" type="text" size="20">    
+                        <button id="predict_button">Predict</button>
+                        <p></p>
+                        <div id="result"></div>
+                </p>
+                <p>Actual account type: <div id="type"></div></p>
+                </center>
+                <link href="index.css" rel="stylesheet" type="text/css" />
+                <center>
+                <p>
+                <div class="col s4">
+                    <div class="switch">
+                        <label>
+                            Business
+                            <label class="switch"><input type="checkbox" id="togBtn">
+                                <div class="slider round">
+                                    <span class="on"></span><span class="off"></span>
+                                </div></label>
+                            Personal
+                        </label>
+                    </div>
+                </div>
+                </p>
+                </center>
+                <br>
+                <br>
+                <center><div class="a"><h1 style="color:#afb0b2"class="contact">Contact</h1></div></center>
+                <center><div class="a"><h1 style="color:#afb0b2"class="about">About</h1></div></center>
+                <center><div class="a"><h1 style="color:#afb0b2"class="github">Github</h1></div></center>
+                <center><div class="a"><a href = "https://en.wikipedia.org/wiki/List_of_most-followed_Instagram_Business_accounts">Most Followed Instagram Business Account Wiki Page</a></div></center> 
+            </div>
+        </div>
         
-
+    
         <script type="text/python3">
             from browser import document, ajax
             import json
@@ -114,9 +172,10 @@
                 else:
                     prediction = 'Business Account! '
                 if response.status==200 or response.status==0:
-                    document["result"].html = prediction + 'Probability of business account is ' + str(round(probability, 5))
+                    document["result"].html = prediction + 'Probability of business account is ' + str(round(probability, 2))
                 else:
                     document["result"].html = "error " + response.text
+                document["type"].html = 'Personal Account'
             def get_prediction(ev):
                 """Get the predicted probability."""
                 req = ajax.ajax()
@@ -127,42 +186,7 @@
                 #data = json.dumps({'user_input': document['user_input'].value})
                 req.send()
             document["predict_button"].bind("click", get_prediction)
-              </script>
-
-        <center>
-        <p> 
-                <div class="a">
-                <img src="ins_logo.png" style="width:35px;height:35px;"/>
-                Enter a Username: <input id="username" type="text" size="20">    
-                <button id="predict_button">Predict</button>
-                <p></p>
-                <div id="result"></div>
-        </p>
-        </center>
-        <link href="index.css" rel="stylesheet" type="text/css" />
-        <center>
-        <p>
-        <div class="col s4">
-            <div class="switch">
-                <label>
-                    Business
-                    <label class="switch"><input type="checkbox" id="togBtn">
-                        <div class="slider round">
-                            <span class="on"></span><span class="off"></span>
-                        </div></label>
-                    Personal
-                </label>
-            </div>
-            </div>
-        </div>
-        </p>
-        </center>
-        <br>
-        <br>
-        <center><div class="a"><h1 style="color:#afb0b2"class="contact">Contact</h1></div></center>
-        <center><div class="a"><h1 style="color:#afb0b2"class="about">About</h1></div></center>
-        <center><div class="a"><h1 style="color:#afb0b2"class="github">Github</h1></div></center>
-        <center><div class="a"><a href = "https://en.wikipedia.org/wiki/List_of_most-followed_Instagram_Business_accounts">Most Followed Instagram Business Account Wiki Page</a></div></center>
+            </script>
     </body>
 </html>
 

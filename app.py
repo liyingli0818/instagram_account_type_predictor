@@ -4,7 +4,7 @@ import pickle
 
 
 #url = instagram.com/username
-loaded_model = pickle.load(open('finalized_model.sav', 'rb'))
+loaded_model = pickle.load(open('finalized_model.pkl', 'rb'))
 #prediction = get_pred_one(url, loaded_model)
 
 
@@ -24,7 +24,12 @@ def predict_account_type(username):
     prediction = str(get_pred_one(url, loaded_model)[0])
     return prediction
 
-
+@app.route('/get_actual_type/<username>', methods=['GET'])
+def get_actual_type(username):
+    url = 'http://instagram.com/%s' % username
+    df_one = get_one_user_df(url)
+    account_type = str(df_one['is_business_account']).split()[1]
+    return account_type
 
 if __name__ == '__main__':
     app.run(debug=True)
