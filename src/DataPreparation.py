@@ -6,13 +6,13 @@ import random
 import bs4
 import requests
 from bs4 import BeautifulSoup
-from selenium.webdriver import Chrome 
+from selenium.webdriver import Chrome, Firefox
 from pymongo import MongoClient
-from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.firefox.options import Options
+
 
 options=Options()
-options.add_argument('--headless')
-options.add_argument('--disable-gpu')
+options.set_headless(True)
 
 
 
@@ -22,7 +22,7 @@ fc = db['followers'] #followers collection
 ffc = db['flat_followers']
 
 
-browser = Chrome(chrome_options=options)
+browser = Firefox(options=options)
 
 
 def get_json(url):
