@@ -139,16 +139,17 @@
                 <center>
                 <p>
                 <div class="col s4">
+                Business
                     <div class="switch">
                         <label>
-                            Business
+                            
                             <label class="switch"><input type="checkbox" id="togBtn">
                                 <div class="slider round">
                                     <span class="on"></span><span class="off"></span>
                                 </div></label>
-                            Personal
                         </label>
                     </div>
+                Personal
                 </div>
                 </p>
                 </center>
@@ -175,7 +176,19 @@
                     document["result"].html = prediction + 'Probability of business account is ' + str(round(probability, 2))
                 else:
                     document["result"].html = "error " + response.text
-                document["type"].html = 'Personal Account'
+                #document["type"].html = 'Personal Account'
+            
+            def display_type(response1):
+                type = str(response1.text)
+                if type == 'False':
+                    account_type = 'Personal Account aaa'
+                else:
+                    account_type = 'Business Account '
+                if response1.status==200 or response1.status==0:
+                    document["type"].html = account_type
+                else:
+                    documeng["type"].html = "error" + response1.text
+
             def get_prediction(ev):
                 """Get the predicted probability."""
                 req = ajax.ajax()
@@ -185,7 +198,15 @@
                 #req.set_header('content-type','application/json')
                 #data = json.dumps({'user_input': document['user_input'].value})
                 req.send()
+
+            def get_actual_type(ev):
+                req = ajax.ajax()
+                req.bind('complete', display_type)
+                username = document['username'].value
+                req.open('GET', f'/get_actual_type/{username}', True)
+                req.send()
             document["predict_button"].bind("click", get_prediction)
+            document["predict_button"].bind("click", get_actual_type)
             </script>
     </body>
 </html>
