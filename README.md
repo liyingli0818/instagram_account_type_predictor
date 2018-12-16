@@ -1,6 +1,7 @@
 # Topic: Instagram Account Type Prediction
  -- Galvanize Data Science Immersive Capstone Project (Dec 2018)
 
+![webpage_screenshot](https://github.com/liyingli0818/instagram_account_type_predictor/blob/master/image/webpage_screenshot.png)
 
 
 ### Business Problem: 
