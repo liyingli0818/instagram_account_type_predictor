@@ -44,7 +44,7 @@ ROC:
 ![roc.png](https://github.com/liyingli0818/instagram_account_type_predictor/blob/master/image/roc_after_add_avg5.png)
 
 ### Demo
-![webpage_screenshot](https://github.com/liyingli0818/instagram_account_type_predictor/blob/master/image/webpage_screenshot.png)
+![webpage_screenshot](https://github.com/liyingli0818/instagram_account_type_predictor/blob/master/image/image.png)
 
 
 
